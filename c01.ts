@@ -14,6 +14,5 @@ var svg = d3.select("body").append("svg")
       return 100 * i * 2;
     })
     .attr("cy", d => d)
-    .attr("r", 100)
     .attr("r", d => d)
     .attr("fill", 'red');

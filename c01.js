@@ -12,6 +12,5 @@ svg.selectAll('circle')
     return 100 * i * 2;
 })
     .attr("cy", function (d) { return d; })
-    .attr("r", 100)
     .attr("r", function (d) { return d; })
     .attr("fill", 'red');
