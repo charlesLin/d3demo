@@ -1,3 +1,6 @@
 node_modules/*
 a*.js
+b*.js
+c*.js
+d*.js
 *.zip
