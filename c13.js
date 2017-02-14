@@ -17,7 +17,7 @@ var height = 200;
 var svg = d3.select("body").append("svg")
     .attr("width", "100%")
     .attr("height", "100%");
-var line = d3.line().x(function (d) { return d.users * 6; }).y(function (d) { return (height - d.rps) * 3; })
+var line = d3.line().x(d => d.users * 6).y(d => (height - d.rps) * 3)
     .curve(d3.curveStep);
 svg.append("path")
     .attr("d", line(data))

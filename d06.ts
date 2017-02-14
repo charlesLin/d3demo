@@ -15,7 +15,7 @@ var xScale = d3.scaleTime().range([0, width]);
 
 
 
-d3.json("2303.json", data => {
+d3.json("2330.json", data => {
   console.log(data);
   var parser = d3.timeParse("%Y%m%d");
   yScale.domain(d3.extent(data.series, d => d.close));

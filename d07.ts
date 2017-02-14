@@ -17,7 +17,7 @@ var line = d3.line()
   .x(d => xScale(parser(d.Date)))
   .y(d => yScale(d.close));
 
-d3.json("2303.json", data => {
+d3.json("2330.json", data => {
   console.log(data);
   yScale.domain(d3.extent(data.series, d => d.close));
   xScale.domain(d3.extent(data.series, d => parser(d.Date)));

@@ -17,7 +17,7 @@ var height = 200;
 var svg = d3.select("body").append("svg")
     .attr("width", "100%")
     .attr("height", "100%");
-var area = d3.area().x(function (d) { return d.users * 6; }).y0(function (d) { return height * 3; }).y1(function (d) { return (height - d.rps) * 3; })
+var area = d3.area().x(d => d.users * 6).y0(d => height * 3).y1(d => (height - d.rps) * 3)
     .curve(d3.curveCardinal);
 svg.append("path")
     .attr("d", area(data))
@@ -26,8 +26,8 @@ svg.append("path")
     .attr("stroke-width", 1);
 svg.selectAll("circle").data(data)
     .enter().append("circle")
-    .attr("cx", function (d) { return d.users * 6; })
-    .attr("cy", function (d) { return (height - d.rps) * 3; })
+    .attr("cx", d => d.users * 6)
+    .attr("cy", d => (height - d.rps) * 3)
     .attr("r", 2)
     .attr("stroke", "blue")
     .attr("fill", "white");

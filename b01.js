@@ -13,13 +13,13 @@ function render(data) {
         .enter()
         .append("rect")
         .attr("x", 0)
-        .attr("y", function (d, i) { return 100 * i * 2; })
-        .attr("width", function (d) { return d; })
+        .attr("y", (d, i) => 100 * i * 2)
+        .attr("width", (d) => d)
         .attr("height", 100)
         .attr("fill", 'red');
     //exit
     rects
         .exit().remove();
 }
-var numbers = populations.map(function (m) { return m.population; });
+var numbers = populations.map(m => m.population);
 render(numbers);

@@ -8,10 +8,10 @@ svg.selectAll('ellipse')
     .data(data)
     .enter()
     .append("ellipse")
-    .attr("cx", function (d, i) {
+    .attr("cx", (d, i) => {
     return 100 * i * 2;
 })
-    .attr("cy", function (d) { return d; })
+    .attr("cy", d => d)
     .attr("rx", 100)
-    .attr("ry", function (d) { return d; })
+    .attr("ry", d => d)
     .attr("fill", 'red');

@@ -8,10 +8,10 @@ svg.selectAll('circle')
     .data(data)
     .enter()
     .append("circle")
-    .attr("cx", function (d, i) {
+    .attr("cx", (d, i) => {
     return 100 * i * 2;
 })
-    .attr("cy", function (d) { return d; })
+    .attr("cy", d => d)
     .attr("r", 100)
-    .attr("r", function (d) { return d; })
+    .attr("r", d => d)
     .style("fill", 'red');

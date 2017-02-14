@@ -8,11 +8,11 @@ svg.selectAll('line')
     .data(data)
     .enter()
     .append("line")
-    .attr("x1", function (d, i) {
+    .attr("x1", (d, i) => {
     return 100 * i * 2;
 })
-    .attr("y1", function (d) { return d; })
+    .attr("y1", d => d)
     .attr("x2", 100)
-    .attr("y2", function (d) { return d * 3; })
+    .attr("y2", d => d * 3)
     .attr("stroke", 'red')
     .attr("stroke-width", 1);

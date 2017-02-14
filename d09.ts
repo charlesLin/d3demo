@@ -17,28 +17,24 @@ var line = d3.line()
   .x(d => xScale(parser(d.Date)))
   .y(d => yScale(d.close));
 
-d3.json("2330.json", data => {
-  console.log(data);
+function render(stock, color) {
+d3.json(stock + ".json", data => {
   yScale.domain(d3.extent(data.series, d => d.close));
   xScale.domain(d3.extent(data.series, d => parser(d.Date)));
 
-  console.log(xScale(parser(data.series[0].Date)));
-  console.log(xScale(parser(data.series[data.series.length - 1].Date)));
-
   svg.append("path")
     .attr("d", line(data.series))
-    .attr("stroke", "red").attr("stroke-width", 1)
+    .attr("stroke", color).attr("stroke-width", 1)
     .attr("fill", "none");
 
-  // var xAxis = d3.axisBottom(xScale);
-  // svg.append("g").call(xAxis);
   var xAxis = d3.axisBottom(xScale);
   svg.append("g")
     .attr("transform", `translate(0, ${height})`)
     .call(xAxis);
   var yAxis = d3.axisLeft(yScale);
   svg.append("g")
-    //.attr("transform", `translate(0, ${height})`)
     .call(yAxis);
-
 });
+}
+
+render("2330", "red");

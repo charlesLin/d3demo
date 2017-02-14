@@ -12,7 +12,7 @@ var svg =
 var yScale = d3.scaleLinear().range([0, height]);
 
 
-d3.json("2303.json", data => {
+d3.json("2330.json", data => {
   yScale.domain(d3.extent(data.series, d => d.close));
   console.log(yScale.domain());
  });

@@ -13,35 +13,30 @@ var yScale = d3.scaleLinear().range([height, 0]);
 
 var xScale = d3.scaleTime().range([0, width]);
 var parser = d3.timeParse("%Y%m%d");
-var line = d3.
+var line = d3.line()
   .x(d => xScale(parser(d.Date)))
   .y(d => yScale(d.close));
 
-var colorScale = d3.scaleSequential(d3.interpolateRainbow).domain([1, 365]);
-
-d3.json("2303.json", data => {
-  console.log(data);
+function render(stock, color) {
+d3.json(stock + ".json", data => {
   yScale.domain(d3.extent(data.series, d => d.close));
   xScale.domain(d3.extent(data.series, d => parser(d.Date)));
 
-  console.log(xScale(parser(data.series[0].Date)));
-  console.log(xScale(parser(data.series[data.series.length - 1].Date)));
-
   svg.append("path")
     .attr("d", line(data.series))
-    .attr("stroke", (d, i) => colorScale(i))
-    .attr("stroke-width", 1)
+    .attr("stroke", color).attr("stroke-width", 1)
     .attr("fill", "none");
 
-  // var xAxis = d3.axisBottom(xScale);
-  // svg.append("g").call(xAxis);
   var xAxis = d3.axisBottom(xScale);
   svg.append("g")
     .attr("transform", `translate(0, ${height})`)
     .call(xAxis);
   var yAxis = d3.axisLeft(yScale);
   svg.append("g")
-    //.attr("transform", `translate(0, ${height})`)
     .call(yAxis);
-
 });
+}
+
+render("2330", "red");
+render("2303", "green");
+render("2331", "blue");
