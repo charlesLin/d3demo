@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript" src="node_modules/d3/build/d3.min.js"></script>
+  <script>
+    var data;
+
+    function myCallBack(_data) {
+      data = _data;
+    }
+  </script>
+  <script src="http://chartapi.finance.yahoo.com/instrument/1.0/2330.tw/chartdata;type=quote;range=1y/json/?callback=myCallBack"></script>
+  <style>
+    svg {
+      border: 1px dashed lightblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>xScale</h1>
+  <p>Axises</p>
+  <script src="d18.js"></script>
+</body>
+
+</html>

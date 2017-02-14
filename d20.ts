@@ -15,10 +15,6 @@ var xScale = d3.scaleTime().range([0, width]);
 
 var colorScale = d3.scaleSequential(d3.interpolateRainbow)
   .domain([0, 3]);
-console.log(colorScale(0));
-console.log(colorScale(1));
-console.log(colorScale(2));
-console.log(colorScale(3));
 
 var parser = d3.timeParse("%Y%m%d");
 var line = d3.line()
@@ -46,7 +42,8 @@ var stocksData = [];
 var pArray = [];
 for (let i = 0; i < 3; i++) {
   var p = new Promise(function (resolve, reject) {
-    d3.json(stocks[i] + ".json", function (data) {
+    var url = `http://chartapi.finance.yahoo.com/instrument/1.0/${stocks[i]}.tw/chartdata;type=quote;range=1y/json/?callback={callback}`;
+    d3.jsonp(url, function (data) {
       stocksData[i] = data;
       resolve(true);
     });
